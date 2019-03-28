@@ -13,7 +13,9 @@ module.exports = {
       }], {});
     */
     return queryInterface.bulkInsert('Rates', [{
-      sell_rate: 1.00
+      sell_rate: 1.00,
+      createdAt: new Date(),
+      updatedAt: new Date()
     }], {});
   },
 
