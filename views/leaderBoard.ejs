@@ -17,7 +17,7 @@
 
     <center>
 
-        
+
         <h1 style="margin-top:10%">📊 LEADERBOARD </h1><br><br>
         <% if (!data.length) { %>
         <h3 style="color:red">NO PLAYERS REGISTERED</h3>
@@ -39,11 +39,16 @@
                     <tr>
                         <td><%= idx + 1 %></td>
                         <td><%= player.getFullName() %></td>
-                        <td><%= player.Club.name %></td>
-                        <% if(player.profit < 0) {%>
-                          <td style="color:red"><%= player.profit %></td>
+                        <% if(!player.Club) { %>
+                        <td>NO CLUB ASSIGNED</td>
+                        <td>N/A</td>
                         <% } else { %>
-                          <td style="color:green"><%= player.profit %></td>
+                        <td><%= player.Club.name %></td>
+                        <% } %>
+                        <% if(player.profit < 0) {%>
+                        <td style="color:red"><%= player.profit %></td>
+                        <% } else { %>
+                        <td style="color:green"><%= player.profit %></td>
                         <% } %>
                     </tr>
                     <% }) %>
