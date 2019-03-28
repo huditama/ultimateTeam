@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register Now!</title>
+</head>
+
+<body background="https://i.pinimg.com/originals/67/ee/d4/67eed4fc823a5782be78b23b36bcb4f2.jpg">
+    <% include ./partials/nav.ejs %>
+    <center>
+        <% if(errorMsg) { %>
+        <% errorMsg.split('\n').forEach((error) => { %>
+            <div style="margin-top:6%">
+                <div class="alert alert-danger" role="alert" style="width:20%">
+                    <%= error.split('error:')[1] %>
+                </div>
+            </div>
+        <%   }) %>
+        <% } %>
+
+        <h3 style="margin:50px">Join the Fun!</h3>
+        <form method="POST" style="margin:50px">
+            <div class="form-row" style="width:40%">
+                <div class="col">
+                    <label for="first_name">First Name</label>
+                    <input type="text" class="form-control" placeholder="First name" name="first_name">
+                </div>
+                <div class="col">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Last name" name="last_name">
+                </div>
+            </div><br>
+            <div class="form-group" style="width:40%">
+                <label for="exampleInputEmail1">Email Address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Enter email" name="email" style="color:grey">
+            </div>
+            <div class="form-group" style="width:40%">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                    name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
+
+    </center>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+[
+    {
+        "name": "Lionel Messi",
+        "attack": 96,
+        "defence": 54,
+        "price": 100000
+    },
+    {
+        "name": "Nicklas Bendtner",
+        "attack": 74,
+        "defence": 14,
+        "price": 5000
+    },
+    {
+        "name": "Paul Pogba",
+        "attack": 88,
+        "defence": 55,
+        "price": 50000
+    },
+    {
+        "name": "Lee Cattermole",
+        "attack": 70,
+        "defence": 66,
+        "price": 4000
+    },
+    {
+        "name": "Virgil van Dijk",
+        "attack": 67,
+        "defence": 84,
+        "price": 46000
+    },
+    {
+        "name": "Reece Oxford",
+        "attack": 32,
+        "defence": 72,
+        "price": 4300
+    },
+    {
+        "name": "David de Gea",
+        "attack": 10,
+        "defence": 91,
+        "price": 50000
+    },
+    {
+        "name": "Costil Pantilimon",
+        "attack": 9,
+        "defence": 73,
+        "price": 6000
+    },
+    {
+        "name": "Cristiano Ronaldo",
+        "attack": 95,
+        "defence": 32,
+        "price": 89000
+    },
+    {
+        "name": "Olivier Giroud",
+        "attack": 81,
+        "defence": 23,
+        "price": 23000
+    },
+    {
+        "name": "Luka Modric",
+        "attack": 90,
+        "defence": 70,
+        "price": 87000
+    },
+    {
+        "name": "Aaron Ramsey",
+        "attack": 82,
+        "defence": 78,
+        "price": 15000
+    },
+    {
+        "name": "Raphael Varane",
+        "attack": 21,
+        "defence": 87,
+        "price": 78000
+    },
+    {
+        "name": "Shkodran Mustafi",
+        "attack": 22,
+        "defence": 78,
+        "price": 10000
+    },
+    {
+        "name": "Manuel Neuer",
+        "attack": 34,
+        "defence": 90,
+        "price": 80000
+    },
+    {
+        "name": "Neymar Jr.",
+        "attack": 92,
+        "defence": 27,
+        "price": 89000
+    },
+    {
+        "name": "Theo Walcott",
+        "attack": 80,
+        "defence": 31,
+        "price": 8000
+    },
+    {
+        "name": "Toni Kroos",
+        "attack": 90,
+        "defence": 80,
+        "price": 100000
+    },
+    {
+        "name": "Morgan Schneiderlin",
+        "attack": 72,
+        "defence": 70,
+        "price": 8000
+    },
+    {
+        "name": "Mats Hummels",
+        "attack": 36,
+        "defence": 90,
+        "price": 75000
+    },
+    {
+        "name": "Calum Chambers",
+        "attack": 20,
+        "defence": 73,
+        "price": 6000
+    },
+    {
+        "name": "Kepa Arrizabalaga",
+        "attack": 12,
+        "defence": 82,
+        "price": 25000
+    },
+    {
+        "name": "Joe Hart",
+        "attack": 19,
+        "defence": 79,
+        "price": 9000
+    },
+    {
+        "name": "Pierre Emerick Aubameyang",
+        "attack": 86,
+        "defence": 43,
+        "price": 69000
+    },
+    {
+        "name": "Jon Walters",
+        "attack": 71,
+        "defence": 42,
+        "price": 4000
+    },
+    {
+        "name": "Frenkie de Jong",
+        "attack": 80,
+        "defence": 75,
+        "price": 32000
+    },
+    {
+        "name": "Renato Sanches",
+        "attack": 76,
+        "defence": 41,
+        "price": 19000
+    },
+    {
+        "name": "Aymeric Laporte",
+        "attack": 41,
+        "defence": 84,
+        "price": 50000
+    },
+    {
+        "name": "Kostas Mavropanos",
+        "attack": 23,
+        "defence": 68,
+        "price": 3000
+    },
+    {
+        "name": "Gianluigi Donnarumma",
+        "attack": 14,
+        "defence": 83,
+        "price": 18000
+    },
+    {
+        "name": "Willy Caballero",
+        "attack": 13,
+        "defence": 76,
+        "price": 5000
+    }
+]
