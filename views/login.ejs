@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Login</title>
+
+</head>
+
+<body
+    background="https://wpmisc.com/sites/default/files/wallpaper/sports/73793/cristiano-ronaldo-hd-wallpapers-73793-3943187.png">
+    <% include ./partials/nav.ejs %>
+    <center>
+        <% if(errorMsg) { %>
+        <% errorMsg.split('\n').forEach((error) => { %>
+            <div style="margin-top:6%">
+                <div class="alert alert-danger" role="alert" style="width:20%">
+                    <%= error.split('Error:')[1] %>
+                </div>
+            </div>
+        <%   }) %>
+        <% } %>
+
+        <div style="margin:140px">
+            <h3>Login!</h3>
+            <form method="POST">
+                <div class="form-group" style="width:40%">
+                    <label for="exampleInputEmail1">Email Address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter email" name="email" style="color:grey">
+                </div>
+                <div class="form-group" style="width:40%">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                        name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+
+
+    </center>
+
+</body>
+
+</html>

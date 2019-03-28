@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+
+    <title>Create Your Club!</title>
+
+</head>
+
+<body background="http://www.jakpost.travel/imgfiles/full/50/505222/soccer-stadium-wallpaper.jpg">
+    <% include ../partials/nav.ejs %>
+    <center>
+        <% if(errorMsg) { %>
+        <% errorMsg.split('\n').forEach((error) => { %>
+        <div style="margin-top:6%">
+            <div class="alert alert-danger" role="alert" style="width:20%">
+                <%= error.split('error:')[1] %>
+            </div>
+        </div>
+        <%   }) %>
+        <% } %>
+
+        <h2 style="margin-top:6%">Hi, <%= findOneUser.first_name %> <%= findOneUser.last_name %>! </h2>
+        <h4 style="margin-top:10%">Build Your Club Now!</h4>
+
+
+        <form method="POST">
+            <input class="form-control" type="text" placeholder="enter your club name..." name="name"
+                style="width:40%"><br>
+            <button type="submit" class="btn btn-primary">Create!</button>
+        </form>
+
+
+
+
+    </center>
+
+</body>
+
+</html>

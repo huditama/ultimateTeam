@@ -1,0 +1,4 @@
+.fixed-top .navbar-collapse {
+  max-height: 340px;
+  overflow-y: auto;
+}
