@@ -73,6 +73,9 @@ router.get('/:id/club', (req, res) => {
         if (req.query.field) query = req.query
         let userData;
         let club;
+        let transactionData;
+        let index;
+        let budget;
 
         User
             .findOne({
@@ -110,8 +113,43 @@ router.get('/:id/club', (req, res) => {
                     })
             })
             .then((transactions) => {
-                const index = transactions.map((el, i) => (el.amount / el.amount) * i)
-                const budget = transactions.map(el => el.budgetLeft)
+                transactionData = transactions
+                index = transactions.map((el, i) => (el.amount / el.amount) * i)
+                budget = transactions.map(el => el.budgetLeft)
+
+                let buy;
+                let sell;
+
+                if (!transactions.length) {
+                    buy = 0
+                    sell = 0
+                }
+                if (!transactions.filter(el => el.type == "buy").length) {
+                    buy = 0
+                }
+                if (!transactions.filter(el => el.type == "sell").length) {
+                    sell = 0
+                }
+                if(transactions.filter(el => el.type == "sell").length > 0 ) {
+                    sell = transactions.filter(el => el.type == "sell").map(e => e.amount).reduce((a, b) => a + b)
+                }
+                if(transactions.filter(el => el.type == "buy").length > 0) {
+                    buy = transactions.filter(el => el.type == "buy").map(e => e.amount).reduce((a, b) => a + b)
+                }
+
+                let profit = +sell - +buy
+                // console.log(profit)
+          
+                return User
+                    .update({
+                        profit
+                    }, {
+                        where: {
+                            id: req.params.id
+                        }
+                    })
+            })
+            .then(() => {
                 const attack = club.map(el => el.Player.attack)
                 const defence = club.map(el => el.Player.defence)
                 let stats;
@@ -120,12 +158,13 @@ router.get('/:id/club', (req, res) => {
                 res.render('users/userClub', {
                     findOneUser: userData,
                     club,
-                    transactions,
+                    transactions: transactionData,
                     budget,
                     index,
                     stats,
                     query
                 })
+
             })
             .catch((err) => {
                 res.send(err.message)

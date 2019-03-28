@@ -57,7 +57,8 @@ module.exports = (sequelize, DataTypes) => {
         msg: 'Budget insufficient!'
       }
     },
-    ClubId: DataTypes.INTEGER
+    ClubId: DataTypes.INTEGER,
+    profit: DataTypes.INTEGER
   }, {
       hooks: {
         beforeCreate: (user) => {
@@ -80,6 +81,10 @@ module.exports = (sequelize, DataTypes) => {
 
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.password);
+  }
+
+  User.prototype.getFullName = function() {
+    return `${this.first_name} ${this.last_name}`
   }
   return User;
 };

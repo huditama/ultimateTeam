@@ -17,7 +17,13 @@
 
     <center>
         <h2 style="margin-top:6%">Hi, <%= findOneUser.first_name %> <%= findOneUser.last_name %>! </h2>
-        <h5>💰 <%= findOneUser.budget %></h5><br><br>
+        <h5>💰 <%= findOneUser.budget %></h5>
+        <% if(findOneUser.profit < 0) { %>
+        <h5 style="color:red">📈 <%= findOneUser.profit %></h5>
+        <% } else { %>
+        <h5 style="color:green">📈 <%= findOneUser.profit %></h5>
+        <% } %>
+        <br><br>
         <h4><%= findOneUser.Club.name %></h4>
 
         <% if (!club.length) { %>

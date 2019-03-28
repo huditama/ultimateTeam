@@ -13,6 +13,7 @@ const register = require('./register')
 const login = require('./login')
 const logout = require('./logout')
 const market = require('./market')
+const leaderBoard = require('./leaderBoard')
 const {User, Rate} = require('../models')
 
 
@@ -46,15 +47,15 @@ router.use((req, res, next) => {
 })
 
 //Cron Middleware (REGENERATE MARKETPLACE)
-// router.use((req, res, next) => {
-//     new CronJob('*/5 * * * *', function () {
-//         fs.writeFileSync('query.json', JSON.stringify({
-//             id: randomizer(0, 49)
-//         }), 'utf8')
-//         console.log('Regenerated Market!')
-//     }, null, true, 'Asia/Jakarta');
-//     next()    
-// })
+router.use((req, res, next) => {
+    new CronJob('*/5 * * * *', function () {
+        fs.writeFileSync('query.json', JSON.stringify({
+            id: randomizer(0, 49)
+        }), 'utf8')
+        console.log('Regenerated Market!')
+    }, null, true, 'Asia/Jakarta');
+    next()    
+})
 
 //Homepage
 router.get('/', (req, res) => {
@@ -68,6 +69,7 @@ router.use('/register', register)
 router.use('/login', login)
 router.use('/logout', logout)
 router.use('/market', market)
+router.use('/leaderboard', leaderBoard)
 
 
 
