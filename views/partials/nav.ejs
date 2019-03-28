@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-
 <head>
     <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../../public//css//nav.css">
@@ -18,36 +17,59 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
-
 <nav style="background-color:gold" style="position:fixed" class= "fixed-top navbar-collapse">
-    <ul class="nav" style="color:black">
-        <li class="nav-item">
-            <a class="nav-link active" href="/" style="color:black">HOME</a>
-        </li>
+<div class="container col-sm-12">
+    <div class="row">
+        <div class="col-sm-6">
+            <ul class="nav" style="color:black;">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/" style="color:black">HOME</a>
+                </li>
+            
+                <% if (user) { %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" style="color:black">
+                        DASHBOARD
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:gold">
+                        <a class="dropdown-item" href="/dashboard/<%= user.info.id %>" style="color:black">CLUB</a>
+                        <a class="dropdown-item" href="/market" style="color:black">MARKETPLACE</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout" style="color:black">LOGOUT</a>
+                </li>
+                <% } else { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="register" style="color:black">REGISTER</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login" style="color:black">LOGIN</a>
+                </li>
+                <% } %>
+        </div>
+        <div class="col-sm-6 d-flex justify-content-end">
+        <% if(locals.loggedInUser) { %>
 
-        <% if (user) { %>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" style="color:black">
-                DASHBOARD
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:gold">
-                <a class="dropdown-item" href="/dashboard/<%= user.info.id %>" style="color:black">CLUB</a>
-                <a class="dropdown-item" href="/market" style="color:black">MARKETPLACE</a>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/logout" style="color:black">LOGOUT</a>
-        </li>
-        <% } else { %>
-        <li class="nav-item">
-            <a class="nav-link" href="register" style="color:black">REGISTER</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="login" style="color:black">LOGIN</a>
-        </li>
+            <li class="nav-item" style="list-style-type:none;">
+                <a class="nav-link" href="/dashboard/<%= locals.loggedInUser.id%>/club" style="color:black">⚽<%= locals.loggedInUser.first_name%></a>
+            </li>
+            <li class="nav-item" style="list-style-type:none;">
+                <a class="nav-link" href="/dashboard/<%= locals.loggedInUser.id%>/club" style="color:black">💰<%= locals.loggedInUser.budget%></a>
+            </li>
+            <li class="nav-item" style="list-style-type:none;">
+                    <a class="nav-link" href="/dashboard/<%= locals.loggedInUser.id%>/club" style="color:black">💱<%= locals.rate.sell_rate%></a>
+                </li>
+
         <% } %>
     </ul>
+        </div>
+    </div>
+</div>
+
+        
+        
 </nav>
 
 </html>

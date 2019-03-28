@@ -15,18 +15,8 @@
     <% include ../partials/nav.ejs %>
 
 
-    <div style="width:13%">
-
-        <ul class="nav justify-content-end" style="background-color:gold">
-            <li class="nav-item" style="margin-top:20%">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" style="color:black">SELL RATE:
-                    <%= latestRate.sell_rate%></a>
-            </li>
-        </ul>
-    </div>
-
     <center>
-        <h2 style="margin-top:3%">Hi, <%= findOneUser.first_name %> <%= findOneUser.last_name %>! </h2>
+        <h2 style="margin-top:6%">Hi, <%= findOneUser.first_name %> <%= findOneUser.last_name %>! </h2>
         <h5>💰 <%= findOneUser.budget %></h5><br><br>
         <h4><%= findOneUser.Club.name %></h4>
 

@@ -1,12 +1,25 @@
 const express = require('express')
 const router = express.Router()
-const { User, Club, Rate, Player, Transaction, ClubPlayer } = require('../../models')
+const {
+    User,
+    Club,
+    Rate,
+    Player,
+    Transaction,
+    ClubPlayer
+} = require('../../models')
 const clubStats = require('../../helpers/atttack_defence_percent')
 
 //Dashboard & Create Club (If club is still NULL)
 router.get('/:id', (req, res) => {
     User
-        .findOne({ where: { id: req.params.id } }, { include: [Club] })
+        .findOne({
+            where: {
+                id: req.params.id
+            }
+        }, {
+            include: [Club]
+        })
         .then((findOneUser) => {
             let errorMsg;
             if (req.query.err) errorMsg = req.query.err
@@ -15,7 +28,10 @@ router.get('/:id', (req, res) => {
             //If user already has a club, redirect to club dashboard
             else if (findOneUser.ClubId) res.redirect(`/dashboard/${req.params.id}/club`)
             //Create club if ClubId NULL
-            else res.render('users/dashboard', { findOneUser, errorMsg })
+            else res.render('users/dashboard', {
+                findOneUser,
+                errorMsg
+            })
         })
         .catch((err) => {
             res.send(err.message)
@@ -30,7 +46,11 @@ router.get('/:id', (req, res) => {
             return User
                 .update({
                     ClubId: newClub.id
-                }, { where: { id: req.params.id } })
+                }, {
+                    where: {
+                        id: req.params.id
+                    }
+                })
         })
         .then(() => {
             res.redirect(`/dashboard/${req.params.id}/club`)
@@ -46,17 +66,20 @@ router.get('/:id/club', (req, res) => {
     //TAMBAHIN ERROR KALO ORANG ITU ACCESS CLUB LAIN DI REDIRECT KE ERROR (NOT DONE)
     if (!req.session.user) res.redirect('/login')
     else {
-        let query = { field: "id", orderBy: "ASC" }
+        let query = {
+            field: "id",
+            orderBy: "ASC"
+        }
         if (req.query.field) query = req.query
         let userData;
-        let latestRate;
         let club;
-        Rate
-            .findAll({ order: [['id', 'desc']], limit: 1 })
-            .then((rate) => {
-                latestRate = rate[0]
-                return User
-                    .findOne({ where: { id: req.params.id }, include: [Club] })
+
+        User
+            .findOne({
+                where: {
+                    id: req.params.id
+                },
+                include: [Club]
             })
             .then((findOneUser) => {
                 userData = findOneUser
@@ -65,9 +88,13 @@ router.get('/:id/club', (req, res) => {
                 else {
                     return ClubPlayer
                         .findAll({
-                            where: { ClubId: userData.ClubId },
+                            where: {
+                                ClubId: userData.ClubId
+                            },
                             include: [Player],
-                            order: [[Player, query.field, query.orderBy]]
+                            order: [
+                                [Player, query.field, query.orderBy]
+                            ]
                         })
                 }
             })
@@ -90,7 +117,15 @@ router.get('/:id/club', (req, res) => {
                 let stats;
                 if (!attack.length || !defence.length) stats = null
                 else stats = clubStats(attack, defence)
-                res.render('users/userClub', { findOneUser: userData, club, latestRate, transactions, budget, index, stats, query })
+                res.render('users/userClub', {
+                    findOneUser: userData,
+                    club,
+                    transactions,
+                    budget,
+                    index,
+                    stats,
+                    query
+                })
             })
             .catch((err) => {
                 res.send(err.message)

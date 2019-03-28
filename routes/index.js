@@ -13,6 +13,7 @@ const register = require('./register')
 const login = require('./login')
 const logout = require('./logout')
 const market = require('./market')
+const {User, Rate} = require('../models')
 
 
 //Session Middleware
@@ -21,6 +22,27 @@ router.use((req, res, next) => {
     if (!req.session.user) res.locals.user = null
     else res.locals.user = req.session.user
     next()
+})
+
+//Get user credentials & rate
+router.use((req, res, next) => {
+    if (req.session.user) {
+        User
+            .findByPk(req.session.user.info.id)
+            .then((findOneUser) => { 
+                res.locals.loggedInUser = findOneUser 
+                return Rate
+                .findAll({ order: [['id', 'desc']], limit: 1 })
+            })
+            .then((rate) => {
+                rate = rate[0]
+                res.locals.rate = rate
+                next()
+            })
+            .catch((err) => next(err.message))
+    } else {
+        next()
+    }
 })
 
 //Cron Middleware (REGENERATE MARKETPLACE)
